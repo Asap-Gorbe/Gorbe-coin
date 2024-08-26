@@ -11,9 +11,8 @@ async def Weather(update, context):
     latitude = message.location.latitude
     longitude = message.location.longitude
     print(f"Received location: Latitude {latitude}, Longitude {longitude}")
-    #await update.message.reply_text(f"Your location: Latitude {latitude}, Longitude {longitude}")
 
-    # Fetch weather data
+
     weather_data = fetch_weather_data(latitude, longitude)
     if weather_data:
         temperature = weather_data.get("hourly", {}).get("temperature_2m", [])
@@ -29,7 +28,7 @@ def fetch_weather_data(latitude, longitude):
 
     try:
         response = requests.get(url)
-        response.raise_for_status()  # Raise an exception if the status code is not 200 (OK)
+        response.raise_for_status()
         weather_data = response.json()
         return weather_data
     except requests.RequestException as e:
