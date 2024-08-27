@@ -2,6 +2,8 @@ from telegram import Update, ForceReply
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 import requests
 
+import weather
+
 Token = '6513294858:AAHoS4Fb5Lxy9Bj-TfVqGLHqAwpdikbvi2w'
 token = Token
 Bot_user_name = '@Gorbe_Coin_bot'
@@ -48,5 +50,9 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(update.message.text)
 
 if __name__ == '__main__':
-    print('We are on ...')
-    app.run_polling(poll_interval=1)
+    if __name__ == '__main__':
+        print('We are on ...')
+        app.add_handler(CommandHandler('start', start))
+        app.add_handler(CommandHandler('echo', echo) )
+        app.add_handler(CommandHandler('Hello',hello))
+        app.run_polling(poll_interval=1)
